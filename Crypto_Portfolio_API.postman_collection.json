@@ -1,0 +1,188 @@
+{
+  "info": {
+    "name": "Crypto Portfolio API",
+    "description": "Complete API collection for Crypto Portfolio Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Assets",
+      "item": [
+        {
+          "name": "Create Bitcoin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bitcoin\",\n  \"symbol\": \"BTC\",\n  \"coinGeckoId\": \"bitcoin\",\n  \"description\": \"Digital gold\",\n  \"riskPercentage\": 45.0\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/assets"}
+          }
+        },
+        {
+          "name": "Create Ethereum",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ethereum\",\n  \"symbol\": \"ETH\",\n  \"coinGeckoId\": \"ethereum\",\n  \"description\": \"Smart contracts\",\n  \"riskPercentage\": 50.0\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/assets"}
+          }
+        },
+        {
+          "name": "Create Dogecoin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dogecoin\",\n  \"symbol\": \"DOGE\",\n  \"coinGeckoId\": \"dogecoin\",\n  \"description\": \"Meme coin\",\n  \"riskPercentage\": 85.0\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/assets"}
+          }
+        },
+        {
+          "name": "Get All Assets",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/assets"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Portfolios",
+      "item": [
+        {
+          "name": "Create Portfolio",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"name\": \"My Crypto Portfolio\",\n  \"description\": \"Long-term investments\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/portfolios"}
+          }
+        },
+        {
+          "name": "Get Portfolio by User",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/portfolios/user/1"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Transactions",
+      "item": [
+        {
+          "name": "Buy Bitcoin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"portfolioId\": 1,\n  \"assetId\": 1,\n  \"quantity\": 0.5,\n  \"priceAtTransaction\": 60000,\n  \"type\": \"BUY\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/transactions"}
+          }
+        },
+        {
+          "name": "Buy Ethereum",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"portfolioId\": 1,\n  \"assetId\": 2,\n  \"quantity\": 3,\n  \"priceAtTransaction\": 3500,\n  \"type\": \"BUY\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/transactions"}
+          }
+        },
+        {
+          "name": "Sell Bitcoin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"portfolioId\": 1,\n  \"assetId\": 1,\n  \"quantity\": 0.2,\n  \"priceAtTransaction\": 65000,\n  \"type\": \"SELL\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/transactions"}
+          }
+        },
+        {
+          "name": "Get Portfolio Transactions",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/transactions/portfolio/1"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Analytics",
+      "item": [
+        {
+          "name": "Portfolio Summary",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/analytics/portfolio/summary/1"}
+          }
+        },
+        {
+          "name": "Portfolio Holdings",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/analytics/portfolio/holdings/1"}
+          }
+        },
+        {
+          "name": "Portfolio Diversification",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/analytics/portfolio/diversification/1"}
+          }
+        },
+        {
+          "name": "Portfolio Risk Assessment",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/analytics/portfolio/risk/1"}
+          }
+        },
+        {
+          "name": "Location Analytics",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/analytics/location/investors"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/users"}
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8080/api/users/1"}
+          }
+        }
+      ]
+    }
+  ]
+}

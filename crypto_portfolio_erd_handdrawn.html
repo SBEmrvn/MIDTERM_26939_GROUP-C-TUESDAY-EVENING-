@@ -1,0 +1,352 @@
+
+<style>
+.erd-wrap { font-family: var(--font-sans); padding: 8px 0; overflow-x: auto; }
+svg.erd { display: block; }
+.entity-header { }
+.cf-one { stroke-width: 1.5; }
+.cf-many { stroke-width: 1.5; fill: none; }
+.rel-line { stroke-width: 1.2; fill: none; }
+</style>
+<div class="erd-wrap">
+<svg class="erd" width="100%" viewBox="0 0 1400 1080" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COLOUR LEGEND (top) -->
+<!-- ═══════════════════════════════════════════════ -->
+<rect x="40" y="18" width="14" height="14" rx="3" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="60" y="30" font-size="12" fill="#534AB7" font-family="var(--font-sans)">User / Auth</text>
+<rect x="160" y="18" width="14" height="14" rx="3" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="180" y="30" font-size="12" fill="#0F6E56" font-family="var(--font-sans)">Location</text>
+<rect x="270" y="18" width="14" height="14" rx="3" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="290" y="30" font-size="12" fill="#854F0B" font-family="var(--font-sans)">Portfolio / Holding</text>
+<rect x="430" y="18" width="14" height="14" rx="3" fill="#FAECE7" stroke="#993C1D" stroke-width="1"/>
+<text x="450" y="30" font-size="12" fill="#993C1D" font-family="var(--font-sans)">Transaction</text>
+<rect x="560" y="18" width="14" height="14" rx="3" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+<text x="580" y="30" font-size="12" fill="#185FA5" font-family="var(--font-sans)">Asset / Tag</text>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: LOCATION  (top-left) -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-location" class="node" onclick="sendPrompt('Tell me more about the Location entity and its self-referencing hierarchy')">
+  <!-- header -->
+  <rect x="40" y="55" width="210" height="32" rx="6" fill="#1D9E75" stroke="#0F6E56" stroke-width="1"/>
+  <text x="145" y="76" text-anchor="middle" font-size="13" font-weight="500" fill="#E1F5EE" font-family="var(--font-sans)">LOCATION</text>
+  <!-- body -->
+  <rect x="40" y="87" width="210" height="145" rx="0" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+  <rect x="40" y="87" width="210" height="145" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+  <!-- rows -->
+  <line x1="40" y1="110" x2="250" y2="110" stroke="#0F6E56" stroke-width="0.5" opacity="0.4"/>
+  <line x1="40" y1="131" x2="250" y2="131" stroke="#0F6E56" stroke-width="0.5" opacity="0.4"/>
+  <line x1="40" y1="152" x2="250" y2="152" stroke="#0F6E56" stroke-width="0.5" opacity="0.4"/>
+  <line x1="40" y1="173" x2="250" y2="173" stroke="#0F6E56" stroke-width="0.5" opacity="0.4"/>
+  <line x1="40" y1="194" x2="250" y2="194" stroke="#0F6E56" stroke-width="0.5" opacity="0.4"/>
+  <!-- fields -->
+  <text x="52" y="103" font-size="11" fill="#085041" font-family="var(--font-sans)" font-weight="500">PK</text>
+  <text x="80" y="103" font-size="11" fill="#085041" font-family="var(--font-sans)">id : UUID</text>
+  <text x="52" y="124" font-size="11" fill="#085041" font-family="var(--font-sans)">   </text>
+  <text x="80" y="124" font-size="11" fill="#085041" font-family="var(--font-sans)">name : String</text>
+  <text x="52" y="145" font-size="11" fill="#0F6E56" font-family="var(--font-sans)" font-weight="500">UK</text>
+  <text x="80" y="145" font-size="11" fill="#085041" font-family="var(--font-sans)">code : String</text>
+  <text x="52" y="166" font-size="11" fill="#085041" font-family="var(--font-sans)">   </text>
+  <text x="80" y="166" font-size="11" fill="#085041" font-family="var(--font-sans)">type : Enum</text>
+  <text x="52" y="187" font-size="11" fill="#1D9E75" font-family="var(--font-sans)" font-weight="500">FK</text>
+  <text x="80" y="187" font-size="11" fill="#085041" font-family="var(--font-sans)">parent_id : UUID</text>
+  <text x="52" y="220" font-size="10" fill="#0F6E56" font-family="var(--font-sans)" font-style="italic">Self-referencing hierarchy</text>
+</g>
+
+<!-- Self-ref arrow on Location -->
+<path d="M250 120 Q310 90 310 159 Q310 210 250 205" stroke="#1D9E75" stroke-width="1.4" fill="none" stroke-dasharray="5 3"/>
+<polygon points="250,200 244,210 256,210" fill="#1D9E75"/>
+<text x="315" y="163" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">parent</text>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: USER  (top-centre) -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-user" class="node" onclick="sendPrompt('Tell me more about the User entity and its role field')">
+  <rect x="450" y="55" width="200" height="32" rx="6" fill="#534AB7" stroke="#3C3489" stroke-width="1"/>
+  <text x="550" y="76" text-anchor="middle" font-size="13" font-weight="500" fill="#EEEDFE" font-family="var(--font-sans)">USER</text>
+  <rect x="450" y="87" width="200" height="187" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <line x1="450" y1="110" x2="650" y2="110" stroke="#534AB7" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="131" x2="650" y2="131" stroke="#534AB7" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="152" x2="650" y2="152" stroke="#534AB7" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="173" x2="650" y2="173" stroke="#534AB7" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="194" x2="650" y2="194" stroke="#534AB7" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="215" x2="650" y2="215" stroke="#534AB7" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="236" x2="650" y2="236" stroke="#534AB7" stroke-width="0.5" opacity="0.4"/>
+  <text x="462" y="103" font-size="11" fill="#26215C" font-family="var(--font-sans)" font-weight="500">PK</text>
+  <text x="490" y="103" font-size="11" fill="#26215C" font-family="var(--font-sans)">id : Long</text>
+  <text x="490" y="124" font-size="11" fill="#26215C" font-family="var(--font-sans)">firstName : String</text>
+  <text x="490" y="145" font-size="11" fill="#26215C" font-family="var(--font-sans)">lastName : String</text>
+  <text x="462" y="166" font-size="11" fill="#534AB7" font-family="var(--font-sans)" font-weight="500">UK</text>
+  <text x="490" y="166" font-size="11" fill="#26215C" font-family="var(--font-sans)">email : String</text>
+  <text x="462" y="187" font-size="11" fill="#534AB7" font-family="var(--font-sans)" font-weight="500">UK</text>
+  <text x="490" y="187" font-size="11" fill="#26215C" font-family="var(--font-sans)">nationalId : String</text>
+  <text x="490" y="208" font-size="11" fill="#26215C" font-family="var(--font-sans)">phoneNumber : String</text>
+  <text x="490" y="229" font-size="11" fill="#26215C" font-family="var(--font-sans)">role : Enum</text>
+  <text x="462" y="250" font-size="11" fill="#7F77DD" font-family="var(--font-sans)" font-weight="500">FK</text>
+  <text x="490" y="250" font-size="11" fill="#26215C" font-family="var(--font-sans)">location_id : UUID</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: PORTFOLIO (centre) -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-portfolio" class="node" onclick="sendPrompt('Tell me more about the Portfolio entity')">
+  <rect x="450" y="400" width="200" height="32" rx="6" fill="#BA7517" stroke="#854F0B" stroke-width="1"/>
+  <text x="550" y="421" text-anchor="middle" font-size="13" font-weight="500" fill="#FAEEDA" font-family="var(--font-sans)">PORTFOLIO</text>
+  <rect x="450" y="432" width="200" height="124" rx="6" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+  <line x1="450" y1="455" x2="650" y2="455" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="476" x2="650" y2="476" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="497" x2="650" y2="497" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="518" x2="650" y2="518" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <text x="462" y="448" font-size="11" fill="#412402" font-family="var(--font-sans)" font-weight="500">PK</text>
+  <text x="490" y="448" font-size="11" fill="#412402" font-family="var(--font-sans)">id : Long</text>
+  <text x="490" y="469" font-size="11" fill="#412402" font-family="var(--font-sans)">name : String</text>
+  <text x="490" y="490" font-size="11" fill="#412402" font-family="var(--font-sans)">description : String</text>
+  <text x="490" y="511" font-size="11" fill="#412402" font-family="var(--font-sans)">createdAt : DateTime</text>
+  <text x="462" y="532" font-size="11" fill="#BA7517" font-family="var(--font-sans)" font-weight="500">FK UK</text>
+  <text x="504" y="532" font-size="11" fill="#412402" font-family="var(--font-sans)">user_id : Long</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: TRANSACTION (bottom-left area) -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-transaction" class="node" onclick="sendPrompt('Tell me more about the Transaction entity and the BUY/SELL types')">
+  <rect x="150" y="680" width="210" height="32" rx="6" fill="#D85A30" stroke="#993C1D" stroke-width="1"/>
+  <text x="255" y="701" text-anchor="middle" font-size="13" font-weight="500" fill="#FAECE7" font-family="var(--font-sans)">TRANSACTION</text>
+  <rect x="150" y="712" width="210" height="187" rx="6" fill="#FAECE7" stroke="#D85A30" stroke-width="1"/>
+  <line x1="150" y1="735" x2="360" y2="735" stroke="#D85A30" stroke-width="0.5" opacity="0.4"/>
+  <line x1="150" y1="756" x2="360" y2="756" stroke="#D85A30" stroke-width="0.5" opacity="0.4"/>
+  <line x1="150" y1="777" x2="360" y2="777" stroke="#D85A30" stroke-width="0.5" opacity="0.4"/>
+  <line x1="150" y1="798" x2="360" y2="798" stroke="#D85A30" stroke-width="0.5" opacity="0.4"/>
+  <line x1="150" y1="819" x2="360" y2="819" stroke="#D85A30" stroke-width="0.5" opacity="0.4"/>
+  <line x1="150" y1="840" x2="360" y2="840" stroke="#D85A30" stroke-width="0.5" opacity="0.4"/>
+  <line x1="150" y1="861" x2="360" y2="861" stroke="#D85A30" stroke-width="0.5" opacity="0.4"/>
+  <text x="162" y="728" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)" font-weight="500">PK</text>
+  <text x="190" y="728" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">id : Long</text>
+  <text x="190" y="749" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">quantity : Double</text>
+  <text x="190" y="770" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">priceAtTransaction</text>
+  <text x="190" y="791" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">totalValue : Double</text>
+  <text x="190" y="812" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">type : Enum (BUY/SELL)</text>
+  <text x="190" y="833" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">transactionDate</text>
+  <text x="162" y="854" font-size="11" fill="#D85A30" font-family="var(--font-sans)" font-weight="500">FK</text>
+  <text x="190" y="854" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">portfolio_id : Long</text>
+  <text x="162" y="875" font-size="11" fill="#D85A30" font-family="var(--font-sans)" font-weight="500">FK</text>
+  <text x="190" y="875" font-size="11" fill="#4A1B0C" font-family="var(--font-sans)">asset_id : Long</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: PORTFOLIO_HOLDING (bottom-centre) -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-holding" class="node" onclick="sendPrompt('Tell me more about PortfolioHolding and the unique composite constraint')">
+  <rect x="450" y="680" width="210" height="32" rx="6" fill="#BA7517" stroke="#854F0B" stroke-width="1"/>
+  <text x="555" y="701" text-anchor="middle" font-size="12" font-weight="500" fill="#FAEEDA" font-family="var(--font-sans)">PORTFOLIO_HOLDING</text>
+  <rect x="450" y="712" width="210" height="166" rx="6" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+  <line x1="450" y1="735" x2="660" y2="735" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="756" x2="660" y2="756" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="777" x2="660" y2="777" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="798" x2="660" y2="798" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="819" x2="660" y2="819" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="840" x2="660" y2="840" stroke="#BA7517" stroke-width="0.5" opacity="0.4"/>
+  <text x="462" y="728" font-size="11" fill="#412402" font-family="var(--font-sans)" font-weight="500">PK</text>
+  <text x="490" y="728" font-size="11" fill="#412402" font-family="var(--font-sans)">id : Long</text>
+  <text x="490" y="749" font-size="11" fill="#412402" font-family="var(--font-sans)">quantity : Double</text>
+  <text x="490" y="770" font-size="11" fill="#412402" font-family="var(--font-sans)">averageBuyPrice</text>
+  <text x="490" y="791" font-size="11" fill="#412402" font-family="var(--font-sans)">lastUpdated : DateTime</text>
+  <text x="462" y="812" font-size="11" fill="#BA7517" font-family="var(--font-sans)" font-weight="500">FK</text>
+  <text x="490" y="812" font-size="11" fill="#412402" font-family="var(--font-sans)">portfolio_id : Long</text>
+  <text x="462" y="833" font-size="11" fill="#BA7517" font-family="var(--font-sans)" font-weight="500">FK</text>
+  <text x="490" y="833" font-size="11" fill="#412402" font-family="var(--font-sans)">asset_id : Long</text>
+  <text x="462" y="862" font-size="10" fill="#854F0B" font-family="var(--font-sans)" font-style="italic">Unique: (portfolio_id, asset_id)</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: ASSET (right side) -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-asset" class="node" onclick="sendPrompt('Tell me more about the Asset entity and riskPercentage field')">
+  <rect x="820" y="530" width="200" height="32" rx="6" fill="#185FA5" stroke="#0C447C" stroke-width="1"/>
+  <text x="920" y="551" text-anchor="middle" font-size="13" font-weight="500" fill="#E6F1FB" font-family="var(--font-sans)">ASSET</text>
+  <rect x="820" y="562" width="200" height="166" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+  <line x1="820" y1="585" x2="1020" y2="585" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <line x1="820" y1="606" x2="1020" y2="606" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <line x1="820" y1="627" x2="1020" y2="627" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <line x1="820" y1="648" x2="1020" y2="648" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <line x1="820" y1="669" x2="1020" y2="669" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <line x1="820" y1="690" x2="1020" y2="690" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <text x="832" y="578" font-size="11" fill="#042C53" font-family="var(--font-sans)" font-weight="500">PK</text>
+  <text x="860" y="578" font-size="11" fill="#042C53" font-family="var(--font-sans)">id : Long</text>
+  <text x="832" y="599" font-size="11" fill="#185FA5" font-family="var(--font-sans)" font-weight="500">UK</text>
+  <text x="860" y="599" font-size="11" fill="#042C53" font-family="var(--font-sans)">name : String</text>
+  <text x="832" y="620" font-size="11" fill="#185FA5" font-family="var(--font-sans)" font-weight="500">UK</text>
+  <text x="860" y="620" font-size="11" fill="#042C53" font-family="var(--font-sans)">symbol : String</text>
+  <text x="832" y="641" font-size="11" fill="#185FA5" font-family="var(--font-sans)" font-weight="500">UK</text>
+  <text x="860" y="641" font-size="11" fill="#042C53" font-family="var(--font-sans)">coinGeckoId : String</text>
+  <text x="860" y="662" font-size="11" fill="#042C53" font-family="var(--font-sans)">description : String</text>
+  <text x="860" y="683" font-size="11" fill="#042C53" font-family="var(--font-sans)">riskPercentage : Double</text>
+  <text x="860" y="714" font-size="10" fill="#185FA5" font-family="var(--font-sans)" font-style="italic">Crypto asset reference</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: ASSET_TAGS join table -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-assettags" class="node" onclick="sendPrompt('Tell me more about the asset_tags join table and many-to-many relationship')">
+  <rect x="840" y="870" width="170" height="32" rx="6" fill="#378ADD" stroke="#185FA5" stroke-width="1"/>
+  <text x="925" y="891" text-anchor="middle" font-size="12" font-weight="500" fill="#E6F1FB" font-family="var(--font-sans)">ASSET_TAGS</text>
+  <rect x="840" y="902" width="170" height="82" rx="6" fill="#E6F1FB" stroke="#378ADD" stroke-width="1"/>
+  <line x1="840" y1="925" x2="1010" y2="925" stroke="#378ADD" stroke-width="0.5" opacity="0.4"/>
+  <line x1="840" y1="946" x2="1010" y2="946" stroke="#378ADD" stroke-width="0.5" opacity="0.4"/>
+  <line x1="840" y1="967" x2="1010" y2="967" stroke="#378ADD" stroke-width="0.5" opacity="0.4"/>
+  <text x="852" y="918" font-size="11" fill="#042C53" font-family="var(--font-sans)" font-weight="500">FK PK</text>
+  <text x="900" y="918" font-size="11" fill="#042C53" font-family="var(--font-sans)">asset_id</text>
+  <text x="852" y="939" font-size="11" fill="#042C53" font-family="var(--font-sans)" font-weight="500">FK PK</text>
+  <text x="900" y="939" font-size="11" fill="#042C53" font-family="var(--font-sans)">tag_id</text>
+  <text x="852" y="972" font-size="10" fill="#185FA5" font-family="var(--font-sans)" font-style="italic">Composite PK</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ENTITY: TAG -->
+<!-- ═══════════════════════════════════════════════ -->
+<g id="e-tag" class="node" onclick="sendPrompt('Tell me more about Tag and how assets are categorised')">
+  <rect x="1090" y="870" width="180" height="32" rx="6" fill="#185FA5" stroke="#0C447C" stroke-width="1"/>
+  <text x="1180" y="891" text-anchor="middle" font-size="13" font-weight="500" fill="#E6F1FB" font-family="var(--font-sans)">TAG</text>
+  <rect x="1090" y="902" width="180" height="82" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+  <line x1="1090" y1="925" x2="1270" y2="925" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <line x1="1090" y1="946" x2="1270" y2="946" stroke="#185FA5" stroke-width="0.5" opacity="0.4"/>
+  <text x="1102" y="918" font-size="11" fill="#042C53" font-family="var(--font-sans)" font-weight="500">PK</text>
+  <text x="1130" y="918" font-size="11" fill="#042C53" font-family="var(--font-sans)">id : Long</text>
+  <text x="1102" y="939" font-size="11" fill="#185FA5" font-family="var(--font-sans)" font-weight="500">UK</text>
+  <text x="1130" y="939" font-size="11" fill="#042C53" font-family="var(--font-sans)">name : String</text>
+  <text x="1102" y="972" font-size="10" fill="#185FA5" font-family="var(--font-sans)" font-style="italic">Label for assets</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- RELATIONSHIPS -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<!-- 1. LOCATION ||--o{ USER  (Location.id → User.location_id) -->
+<!-- Many users can be in one location -->
+<!-- line from right of LOCATION (250,160) to left of USER (450,250) -->
+<path d="M250 160 L380 160 L380 250 L450 250" stroke="#1D9E75" stroke-width="1.4" fill="none"/>
+<!-- one-side: || at LOCATION end -->
+<line x1="250" y1="153" x2="250" y2="167" stroke="#1D9E75" stroke-width="2"/>
+<line x1="258" y1="153" x2="258" y2="167" stroke="#1D9E75" stroke-width="2"/>
+<!-- many-side: crow's foot at USER end -->
+<line x1="450" y1="244" x2="436" y2="257" stroke="#1D9E75" stroke-width="1.5"/>
+<line x1="450" y1="256" x2="436" y2="257" stroke="#1D9E75" stroke-width="1.5"/>
+<line x1="450" y1="250" x2="436" y2="250" stroke="#1D9E75" stroke-width="1.5"/>
+<line x1="428" y1="243" x2="428" y2="257" stroke="#1D9E75" stroke-width="1.5"/>
+<text x="300" y="150" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">lives in</text>
+
+<!-- 2. USER ||--|| PORTFOLIO (one-to-one) -->
+<!-- line from bottom of USER (550,274) to top of PORTFOLIO (550,400) -->
+<path d="M550 274 L550 400" stroke="#534AB7" stroke-width="1.4" fill="none"/>
+<!-- one-one: double bar each end -->
+<line x1="543" y1="280" x2="557" y2="280" stroke="#534AB7" stroke-width="2"/>
+<line x1="543" y1="287" x2="557" y2="287" stroke="#534AB7" stroke-width="2"/>
+<line x1="543" y1="394" x2="557" y2="394" stroke="#534AB7" stroke-width="2"/>
+<line x1="543" y1="401" x2="557" y2="401" stroke="#534AB7" stroke-width="2"/>
+<text x="558" y="340" font-size="10" fill="#3C3489" font-family="var(--font-sans)">owns (1:1)</text>
+
+<!-- 3. PORTFOLIO ||--o{ TRANSACTION -->
+<!-- from left of PORTFOLIO (450,494) to top of TRANSACTION (255,680) -->
+<path d="M450 494 L360 494 L360 650 L255 650 L255 680" stroke="#BA7517" stroke-width="1.4" fill="none"/>
+<!-- one side at portfolio -->
+<line x1="444" y1="487" x2="444" y2="501" stroke="#BA7517" stroke-width="2"/>
+<line x1="450" y1="487" x2="450" y2="501" stroke="#BA7517" stroke-width="2"/>
+<!-- many side crow foot at transaction -->
+<line x1="249" y1="680" x2="261" y2="680" stroke="#BA7517" stroke-width="1.5"/>
+<line x1="255" y1="680" x2="248" y2="668" stroke="#BA7517" stroke-width="1.5"/>
+<line x1="255" y1="680" x2="262" y2="668" stroke="#BA7517" stroke-width="1.5"/>
+<line x1="248" y1="662" x2="262" y2="662" stroke="#BA7517" stroke-width="1.5"/>
+<text x="362" y="638" font-size="10" fill="#854F0B" font-family="var(--font-sans)">has (1:M)</text>
+
+<!-- 4. PORTFOLIO ||--o{ PORTFOLIO_HOLDING -->
+<!-- from bottom of PORTFOLIO (550,556) to top of HOLDING (555,680) -->
+<path d="M550 556 L550 680" stroke="#BA7517" stroke-width="1.4" fill="none"/>
+<line x1="544" y1="561" x2="556" y2="561" stroke="#BA7517" stroke-width="2"/>
+<line x1="544" y1="568" x2="556" y2="568" stroke="#BA7517" stroke-width="2"/>
+<line x1="549" y1="680" x2="561" y2="680" stroke="#BA7517" stroke-width="1.5"/>
+<line x1="555" y1="680" x2="548" y2="668" stroke="#BA7517" stroke-width="1.5"/>
+<line x1="555" y1="680" x2="562" y2="668" stroke="#BA7517" stroke-width="1.5"/>
+<line x1="548" y1="662" x2="562" y2="662" stroke="#BA7517" stroke-width="1.5"/>
+<text x="562" y="625" font-size="10" fill="#854F0B" font-family="var(--font-sans)">contains (1:M)</text>
+
+<!-- 5. ASSET ||--o{ TRANSACTION -->
+<!-- from left of ASSET (820,625) to right of TRANSACTION (360,800) -->
+<path d="M820 625 L720 625 L720 800 L360 800" stroke="#185FA5" stroke-width="1.4" fill="none"/>
+<line x1="820" y1="619" x2="820" y2="631" stroke="#185FA5" stroke-width="2"/>
+<line x1="826" y1="619" x2="826" y2="631" stroke="#185FA5" stroke-width="2"/>
+<line x1="360" y1="794" x2="360" y2="806" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="360" y1="800" x2="372" y2="793" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="360" y1="800" x2="372" y2="807" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="372" y1="793" x2="372" y2="807" stroke="#185FA5" stroke-width="1.5"/>
+<text x="680" y="618" font-size="10" fill="#0C447C" font-family="var(--font-sans)">involved in (1:M)</text>
+
+<!-- 6. ASSET ||--o{ PORTFOLIO_HOLDING -->
+<!-- from left of ASSET (820,660) to right of HOLDING (660,790) -->
+<path d="M820 660 L760 660 L760 790 L660 790" stroke="#185FA5" stroke-width="1.4" fill="none"/>
+<line x1="820" y1="654" x2="820" y2="666" stroke="#185FA5" stroke-width="2"/>
+<line x1="814" y1="654" x2="814" y2="666" stroke="#185FA5" stroke-width="2"/>
+<line x1="660" y1="784" x2="660" y2="796" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="660" y1="790" x2="672" y2="783" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="660" y1="790" x2="672" y2="797" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="672" y1="783" x2="672" y2="797" stroke="#185FA5" stroke-width="1.5"/>
+<text x="762" y="654" font-size="10" fill="#0C447C" font-family="var(--font-sans)">held in (1:M)</text>
+
+<!-- 7. ASSET ||--o{ ASSET_TAGS -->
+<path d="M920 728 L920 870" stroke="#378ADD" stroke-width="1.4" fill="none"/>
+<line x1="914" y1="728" x2="926" y2="728" stroke="#378ADD" stroke-width="2"/>
+<line x1="914" y1="734" x2="926" y2="734" stroke="#378ADD" stroke-width="2"/>
+<line x1="914" y1="870" x2="926" y2="870" stroke="#378ADD" stroke-width="1.5"/>
+<line x1="920" y1="870" x2="913" y2="858" stroke="#378ADD" stroke-width="1.5"/>
+<line x1="920" y1="870" x2="927" y2="858" stroke="#378ADD" stroke-width="1.5"/>
+<line x1="913" y1="858" x2="927" y2="858" stroke="#378ADD" stroke-width="1.5"/>
+<text x="928" y="800" font-size="10" fill="#185FA5" font-family="var(--font-sans)">tagged with</text>
+
+<!-- 8. TAG ||--o{ ASSET_TAGS -->
+<path d="M1090 936 L1010 936" stroke="#378ADD" stroke-width="1.4" fill="none"/>
+<line x1="1090" y1="930" x2="1090" y2="942" stroke="#185FA5" stroke-width="2"/>
+<line x1="1084" y1="930" x2="1084" y2="942" stroke="#185FA5" stroke-width="2"/>
+<line x1="1010" y1="930" x2="1010" y2="942" stroke="#378ADD" stroke-width="1.5"/>
+<line x1="1010" y1="936" x2="1022" y2="929" stroke="#378ADD" stroke-width="1.5"/>
+<line x1="1010" y1="936" x2="1022" y2="943" stroke="#378ADD" stroke-width="1.5"/>
+<line x1="1022" y1="929" x2="1022" y2="943" stroke="#378ADD" stroke-width="1.5"/>
+<text x="1030" y="926" font-size="10" fill="#0C447C" font-family="var(--font-sans)">labels</text>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CARDINALITY LEGEND (bottom) -->
+<!-- ═══════════════════════════════════════════════ -->
+<rect x="40" y="1010" width="1300" height="55" rx="8" fill="none" stroke="var(--color-border-tertiary)" stroke-width="0.5"/>
+<text x="60" y="1030" font-size="11" fill="var(--color-text-secondary)" font-family="var(--font-sans)" font-weight="500">Crow's Foot Notation:</text>
+<!-- one -->
+<line x1="210" y1="1020" x2="240" y2="1020" stroke="var(--color-text-secondary)" stroke-width="1.5"/>
+<line x1="228" y1="1014" x2="228" y2="1026" stroke="var(--color-text-secondary)" stroke-width="2"/>
+<line x1="234" y1="1014" x2="234" y2="1026" stroke="var(--color-text-secondary)" stroke-width="2"/>
+<text x="245" y="1024" font-size="11" fill="var(--color-text-secondary)" font-family="var(--font-sans)">= One (mandatory)</text>
+<!-- many -->
+<line x1="440" y1="1020" x2="470" y2="1020" stroke="var(--color-text-secondary)" stroke-width="1.5"/>
+<line x1="440" y1="1020" x2="453" y2="1013" stroke="var(--color-text-secondary)" stroke-width="1.5"/>
+<line x1="440" y1="1020" x2="453" y2="1027" stroke="var(--color-text-secondary)" stroke-width="1.5"/>
+<line x1="453" y1="1013" x2="453" y2="1027" stroke="var(--color-text-secondary)" stroke-width="1.5"/>
+<text x="475" y="1024" font-size="11" fill="var(--color-text-secondary)" font-family="var(--font-sans)">= Many</text>
+<!-- dashed = self-ref -->
+<line x1="580" y1="1020" x2="620" y2="1020" stroke="var(--color-text-secondary)" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="625" y="1024" font-size="11" fill="var(--color-text-secondary)" font-family="var(--font-sans)">= Self-referencing</text>
+<!-- uk -->
+<rect x="800" y="1013" width="14" height="14" rx="2" fill="none" stroke="var(--color-text-secondary)" stroke-width="1"/>
+<text x="800" y="1024" font-size="9" fill="var(--color-text-secondary)" font-family="var(--font-sans)">UK</text>
+<text x="818" y="1024" font-size="11" fill="var(--color-text-secondary)" font-family="var(--font-sans)">= Unique Key</text>
+<rect x="960" y="1013" width="14" height="14" rx="2" fill="none" stroke="var(--color-text-secondary)" stroke-width="1"/>
+<text x="960" y="1024" font-size="9" fill="var(--color-text-secondary)" font-family="var(--font-sans)">FK</text>
+<text x="978" y="1024" font-size="11" fill="var(--color-text-secondary)" font-family="var(--font-sans)">= Foreign Key</text>
+<rect x="1100" y="1013" width="14" height="14" rx="2" fill="none" stroke="var(--color-text-secondary)" stroke-width="1"/>
+<text x="1100" y="1024" font-size="9" fill="var(--color-text-secondary)" font-family="var(--font-sans)">PK</text>
+<text x="1118" y="1024" font-size="11" fill="var(--color-text-secondary)" font-family="var(--font-sans)">= Primary Key</text>
+
+<text x="60" y="1052" font-size="10" fill="var(--color-text-tertiary)" font-family="var(--font-sans)" font-style="italic">Click any entity to explore it further</text>
+</svg>
+</div>
